@@ -898,8 +898,8 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
     }, [scrollProgress]);
 
     const bottleScale = useTransform(scrollProgress, [0, 1], [0.6, 2.2]);
-    const bottleY = useTransform(scrollProgress, [0, 1], [50, 250]);
-    const bottleX = useTransform(scrollProgress, [0, 1], [-50, 100]);
+    const bottleY = useTransform(scrollProgress, [0, 1], [50, 200]);
+    const bottleX = useTransform(scrollProgress, [0, 1], [50, 100]);
     // 3D tilt: straight at start → tilts mid-scroll → straightens at end
     const bottleTiltX = useTransform(scrollProgress, [0, 0.2, 0.5, 0.8, 1], [0, 15, 18, 15, 0]);
     // Background fades out as the bottle reaches its final form

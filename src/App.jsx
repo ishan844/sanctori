@@ -367,21 +367,65 @@ const ProvenanceJourney = () => {
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll();
-        return () => window.removeEventListener('scroll', handleScroll);
     }, [pillars.length]);
+
+    const [isHovering, setIsHovering] = useState(false);
+    const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            if (isHovering) {
+                setMousePos({ x: e.clientX, y: e.clientY });
+            }
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, [isHovering]);
+
+    const cursorImages = [
+        '/assets/gir-cursor.png',
+        '/assets/bilona-cursor.png',
+        '/assets/jar-cursor.png'
+    ];
 
     return (
         <section
             ref={sectionRef}
-            className="w-full bg-tertiary border-t border-secondary/25 relative"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            className="w-full bg-tertiary border-t border-secondary/25 relative cursor-none"
             style={{ height: `${pillars.length * 100}vh` }}
         >
+            {/* React-based custom cursor to allow larger sizes */}
+            <motion.div
+                className="fixed top-0 left-0 pointer-events-none z-50 mix-blend-multiply"
+                style={{ x: mousePos.x, y: mousePos.y }}
+                animate={{ 
+                    opacity: isHovering ? 1 : 0,
+                    scale: isHovering ? 1 : 0.8
+                }}
+                transition={{ type: "tween", ease: "circOut", duration: 0.15 }}
+            >
+                <img 
+                    src={cursorImages[activeIndex]} 
+                    alt="Custom Cursor"
+                    className="w-48 lg:w-56 object-contain"
+                    style={{ transform: 'translate(-50%, -50%)' }}
+                />
+            </motion.div>
+
             {/* Sticky container — both columns stay fixed while section scrolls */}
             <div
-                className="sticky top-0 h-screen w-full flex flex-col lg:flex-row overflow-hidden"
+                className="sticky top-0 h-screen w-full flex flex-col lg:flex-row overflow-hidden group"
             >
+                {/* Global cursor override to ensure native cursor is hidden */}
+                <style>{`
+                    .group * {
+                        cursor: none !important;
+                    }
+                `}</style>
                 {/* LEFT COLUMN — Full-height illustration */}
-                <div className="hidden lg:block lg:w-[48%] h-full relative overflow-hidden">
+                <div className="hidden lg:block lg:w-[48%] h-full relative overflow-hidden pointer-events-none">
                     <img
                         src="/assets/provenance_illustration.png"
                         alt="Provenance illustration — Saurashtra landscape with Gir cattle"
@@ -524,6 +568,211 @@ const ProvenanceJourney = () => {
     );
 };
 
+const details = [
+    {
+        heading: "Origin",
+        description: "Saurashtra, Gujarat. The western grasslands of India where Gir cattle have been raised for generations. The land is dry, the grass sparse and mineral-rich. That's not a limitation — it's the reason the milk is what it is."
+    },
+    {
+        heading: "Ingredients",
+        description: "One ingredient. Cultured A2 milk from Gir cows. No additives, no synthetic colour, no preservatives. What you open is exactly what was made."
+    },
+    {
+        heading: "Process",
+        description: "Milk collected at dawn. Set overnight in clay pots to culture naturally. Hand-churned the following morning using a wooden bilona churner — a rope, a spindle, and time. The butter extracted is then slow-cooked over a low flame until the milk solids separate and sink. Sealed the same day. Nothing is added at any point. Nothing is rushed."
+    }
+];
+
+const ProductDetails = () => {
+    const sectionRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Shutter-like vertical slide reveal
+    const y = useTransform(scrollYProgress, [0, 0.35], ["100vh", "0vh"]);
+    const shutterScale = useTransform(scrollYProgress, [0, 0.35], [0.95, 1]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!sectionRef.current) return;
+            const rect = sectionRef.current.getBoundingClientRect();
+            
+            // Logic to handle active index based on scroll within the sticky area
+            if (rect.top > 5) {
+                setActiveIndex(0);
+                return;
+            }
+            
+            const sectionTop = -rect.top;
+            const sectionHeight = sectionRef.current.scrollHeight - window.innerHeight;
+            const progress = Math.max(0, Math.min(1, sectionTop / sectionHeight));
+            const newIndex = Math.min(
+                details.length - 1,
+                Math.floor(progress * details.length)
+            );
+            
+            setActiveIndex(newIndex);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    return (
+        <section
+            ref={sectionRef}
+            className="w-full bg-tertiary relative overflow-visible z-20"
+            style={{ height: `${details.length * 100}vh` }}
+        >
+            {/* Sticky container */}
+            <motion.div
+                style={{ 
+                    y, 
+                    scale: shutterScale,
+                    cursor: activeIndex === 1 ? `url('/assets/a2-cursor.png'), auto` :
+                            activeIndex === 2 ? `url('/assets/process-cursor.png'), auto` :
+                            'default'
+                }}
+                className="sticky top-0 h-screen w-full flex flex-col lg:flex-row-reverse overflow-hidden bg-tertiary group-details"
+            >
+                <style>{`
+                    .group-details * {
+                        cursor: inherit !important;
+                    }
+                `}</style>
+                {/* RIGHT COLUMN — Illustration (Inverted) */}
+                <div className="hidden lg:block lg:w-[48%] h-full relative overflow-hidden pointer-events-none">
+                    <img
+                        src="/assets/ghee_process.png"
+                        alt="Ghee production process — Origin, Ingredients, and Bilona method"
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    {/* Soft edge fade into the text column */}
+                    <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                            background: 'linear-gradient(to left, transparent 70%, #f3efe8 100%)',
+                        }}
+                    />
+                </div>
+
+                {/* LEFT COLUMN — Sticky text panel (Inverted) */}
+                <div className="w-full lg:w-[52%] h-full flex flex-col px-8 lg:px-20 xl:px-28 relative">
+                    {/* Section title */}
+                    <div className="pt-20 lg:pt-32 pb-10">
+                        <h2 className="font-rosemode text-secondary text-[24px] lg:text-[29px] xl:text-[36px] leading-[1.15]">
+                            The Essential Craft
+                        </h2>
+                    </div>
+
+                    {/* Text content */}
+                    <div className="flex-1 flex flex-col justify-center">
+                        <div className="relative min-h-[400px]">
+                            {/* Vertical scroll progress bar — ALIGNED LEFT (Inverted) */}
+                            <div
+                                className="absolute -left-12 lg:-left-20 top-0 h-full flex items-start pointer-events-none"
+                                style={{ width: '24px' }}
+                            >
+                                <div
+                                    className="relative rounded-full"
+                                    style={{
+                                        width: '3px',
+                                        height: '100%',
+                                        backgroundColor: 'rgba(36, 36, 36, 0.08)',
+                                    }}
+                                >
+                                    <div
+                                        className="absolute left-0 w-full rounded-full"
+                                        style={{
+                                            height: `${100 / details.length}%`,
+                                            top: `${(activeIndex / details.length) * 100}%`,
+                                            backgroundColor: '#242424',
+                                            opacity: 0.35,
+                                            transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                                        }}
+                                    />
+                                </div>
+                            </div>
+
+                            {details.map((point, i) => (
+                                <div
+                                    key={i}
+                                    className="absolute inset-0 flex flex-col"
+                                    style={{
+                                        opacity: activeIndex === i ? 1 : 0,
+                                        transform: activeIndex === i
+                                            ? 'translateY(0)'
+                                            : activeIndex > i
+                                                ? 'translateY(-24px)'
+                                                : 'translateY(24px)',
+                                        transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                                        pointerEvents: activeIndex === i ? 'auto' : 'none',
+                                    }}
+                                >
+                                    {/* Heading */}
+                                    <h3 className="font-gotham text-secondary text-[22px] lg:text-[24px] xl:text-[29px] uppercase tracking-[0.05em] font-bold mb-6 leading-tight">
+                                        {point.heading}
+                                    </h3>
+
+                                    {/* Divider */}
+                                    <div
+                                        className="h-px bg-secondary/20 mb-8"
+                                        style={{
+                                            width: activeIndex === i ? '64px' : '0px',
+                                            transition: 'width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s',
+                                        }}
+                                    />
+
+                                    {/* Description */}
+                                    <p className="font-gotham text-secondary/70 text-sm lg:text-base xl:text-lg font-normal leading-[180%] max-w-xl">
+                                        {point.description}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* MOBILE FALLBACK */}
+            <div className="lg:hidden absolute inset-0 bg-tertiary px-6 py-20">
+                <div className="w-full h-64 mb-12 overflow-hidden">
+                    <img
+                        src="/assets/ghee_process.png"
+                        alt="Product Details"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+
+                <h2 className="font-rosemode text-secondary text-[24px] leading-[1.15] mb-12">
+                    The Essential Craft
+                </h2>
+
+                <div className="flex flex-col gap-16">
+                    {details.map((point, i) => (
+                        <div key={i} className="flex flex-col">
+                            <span className="font-gotham text-secondary/30 text-[12px] uppercase tracking-[0.25em] font-medium mb-4">
+                                0{i + 1} / 0{details.length}
+                            </span>
+                            <h3 className="font-gotham text-secondary text-base uppercase tracking-[0.1em] font-bold mb-3">
+                                {point.heading}
+                            </h3>
+                            <div className="w-10 h-px bg-secondary/20 mb-5" />
+                            <p className="font-gotham text-secondary/70 text-xs font-normal leading-[185%]">
+                                {point.description}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 const TOTAL_FRAMES = 60;
 const FRAME_PATH = '/assets/ghee-frames/frame_';
 
@@ -649,8 +898,8 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
     }, [scrollProgress]);
 
     const bottleScale = useTransform(scrollProgress, [0, 1], [0.6, 2.2]);
-    const bottleY = useTransform(scrollProgress, [0, 1], [50, 200]);
-    const bottleX = useTransform(scrollProgress, [0, 1], [50, 100]);
+    const bottleY = useTransform(scrollProgress, [0, 1], [50, 250]);
+    const bottleX = useTransform(scrollProgress, [0, 1], [-50, 100]);
     // 3D tilt: straight at start → tilts mid-scroll → straightens at end
     const bottleTiltX = useTransform(scrollProgress, [0, 0.2, 0.5, 0.8, 1], [0, 15, 18, 15, 0]);
     // Background fades out as the bottle reaches its final form
@@ -1360,6 +1609,9 @@ function App() {
 
                 {/* 2. THE PROVENANCE JOURNEY */}
                 <ProvenanceJourney />
+
+                {/* 2b. PRODUCT DETAILS (Inverted) */}
+                <ProductDetails />
 
                 {/* RITUALS SECTION — Horizontal Accordion */}
                 <UsageAccordion />

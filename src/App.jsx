@@ -722,37 +722,37 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                     {/* Right: The Product Details */}
                     <motion.div
                         style={{ opacity: detailsOpacity, pointerEvents }}
-                        className="w-full lg:w-[42%] flex flex-col items-start text-left z-30 mt-8 lg:mt-0 lg:pt-10 lg:pr-4"
+                        className="w-full lg:w-[42%] flex flex-col items-start text-left z-30 mt-8 lg:mt-0 lg:pt-6 lg:pr-4"
                     >
                         {/* Category / Subtitle */}
-                        <div className="flex items-center gap-4 mb-4 w-full">
+                        <div className="flex items-center gap-4 mb-3 w-full">
                             <div className="h-px w-8 bg-secondary/50"></div>
-                            <span className="font-gotham text-secondary/75 text-[11px] uppercase tracking-[0.2em] font-medium">Saurashtra, India</span>
+                            <span className="font-gotham text-secondary/75 text-[10px] uppercase tracking-[0.2em] font-medium">Saurashtra, India</span>
                         </div>
 
                         {/* Title & Price */}
-                        <div className="flex flex-col w-full mb-5">
-                            <h1 className="font-rosemode text-secondary text-[34px] lg:text-[48px] leading-none mb-1">Gir Bilona Ghee</h1>
-                            <span className="font-gotham text-secondary text-base lg:text-lg font-light">{sizeOptions[selectedSize].price} <span className="text-[13px] text-secondary/50 ml-2">/ {sizeOptions[selectedSize].label}</span></span>
+                        <div className="flex flex-col w-full mb-4">
+                            <h1 className="font-rosemode text-secondary text-[34px] lg:text-[42px] leading-none mb-1">Gir Bilona Ghee</h1>
+                            <span className="font-gotham text-secondary text-base lg:text-[17px] font-light">{sizeOptions[selectedSize].price} <span className="text-[12px] text-secondary/50 ml-2">/ {sizeOptions[selectedSize].label}</span></span>
                         </div>
 
                         {/* Description */}
-                        <div className="font-gotham text-secondary/60 text-[13px] lg:text-sm font-normal leading-[180%] mb-8">
+                        <div className="font-gotham text-secondary/60 text-[13px] lg:text-[13px] font-normal leading-[180%] mb-6">
                             <span className="block whitespace-nowrap"><em>Bilona method — milk set overnight in clay, hand-churned at dawn.</em></span>
                             <span className="block">Fewer than a hundred batches made this way each year.</span>
                         </div>
 
                         {/* Selectors / Add to Cart area */}
-                        <div className="w-full flex flex-col gap-5 mb-8">
+                        <div className="w-full flex flex-col gap-4 mb-6">
                             {/* Size Selector */}
-                            <div className="flex flex-col gap-2">
-                                <span className="font-gotham text-secondary/80 text-[11px] uppercase tracking-[0.1em]">Size</span>
+                            <div className="flex flex-col gap-1.5">
+                                <span className="font-gotham text-secondary/80 text-[10px] uppercase tracking-[0.1em]">Size</span>
                                 <div className="flex gap-2">
                                     {Object.entries(sizeOptions).map(([key, opt]) => (
                                         <div key={key} className="relative group">
                                             <button
                                                 onClick={() => setSelectedSize(key)}
-                                                className={`px-5 py-2 rounded-full border text-[13px] uppercase tracking-wider transition-all duration-200 cursor-pointer font-gotham font-medium ${selectedSize === key
+                                                className={`px-5 py-2 rounded-full border text-[12px] uppercase tracking-wider transition-all duration-200 cursor-pointer font-gotham font-medium ${selectedSize === key
                                                     ? 'border-secondary bg-secondary text-tertiary'
                                                     : 'border-secondary/25 text-secondary/60 hover:border-secondary/60 hover:text-secondary'
                                                     }`}
@@ -770,11 +770,11 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                             </div>
 
                             {/* Delivery Frequency */}
-                            <div className="flex flex-col gap-2">
-                                <span className="font-gotham text-secondary/80 text-[11px] uppercase tracking-[0.1em]">Delivery Frequency</span>
+                            <div className="flex flex-col gap-1.5">
+                                <span className="font-gotham text-secondary/80 text-[10px] uppercase tracking-[0.1em]">Delivery Frequency</span>
                                 <div className="flex gap-2 w-full">
-                                    <button className="flex-1 py-3 border border-secondary text-secondary text-[13px] uppercase tracking-wider hover:bg-secondary hover:text-tertiary transition-colors cursor-pointer">One-Time</button>
-                                    <button className="flex-1 py-3 border border-secondary/20 text-secondary/50 text-[13px] uppercase tracking-wider hover:border-secondary transition-colors cursor-pointer">Subscribe</button>
+                                    <button className="flex-1 py-2.5 border border-secondary text-secondary text-[12px] uppercase tracking-wider hover:bg-secondary hover:text-tertiary transition-colors cursor-pointer">One-Time</button>
+                                    <button className="flex-1 py-2.5 border border-secondary/20 text-secondary/50 text-[12px] uppercase tracking-wider hover:border-secondary transition-colors cursor-pointer">Subscribe</button>
                                 </div>
                             </div>
 
@@ -789,7 +789,7 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                                     }
                                 }}
                                 layout
-                                className={`relative w-full py-3 text-[13px] font-medium uppercase tracking-[0.15em] cursor-pointer overflow-hidden border ${isAddedToBasket
+                                className={`relative w-full py-2.5 text-[12px] font-medium uppercase tracking-[0.15em] cursor-pointer overflow-hidden border ${isAddedToBasket
                                     ? 'bg-tertiary text-secondary border-secondary/30'
                                     : 'bg-secondary text-tertiary border-secondary'
                                     }`}
@@ -851,14 +851,14 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                         </div>
 
                         {/* Footer specs */}
-                        <div className="w-full flex flex-col pt-6 border-t border-secondary/20">
+                        <div className="w-full flex flex-col pt-4 border-t border-secondary/20">
                             {/* Tasting Notes Accordion */}
                             <div className="flex flex-col">
                                 <button
                                     onClick={() => setTastingOpen(prev => !prev)}
-                                    className="flex justify-between items-center w-full group cursor-pointer py-2 bg-transparent border-none outline-none"
+                                    className="flex justify-between items-center w-full group cursor-pointer py-1.5 bg-transparent border-none outline-none"
                                 >
-                                    <span className="font-gotham text-secondary text-[13px] uppercase tracking-wider">Tasting Notes</span>
+                                    <span className="font-gotham text-secondary text-[12px] uppercase tracking-wider">Tasting Notes</span>
                                     <motion.svg
                                         width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                                         className="text-secondary/50 group-hover:text-secondary transition-colors"
@@ -878,7 +878,7 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                                             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                                             className="overflow-hidden"
                                         >
-                                            <p className="pb-5 pt-2 font-gotham text-secondary text-[13px] font-light leading-[200%]">
+                                            <p className="pb-4 pt-1 font-gotham text-secondary text-[12px] font-light leading-[200%]">
                                                 {[
                                                     'Rich and nutty with a quiet sweetness underneath. ',
                                                     'A clean finish — no heaviness, no aftertaste. ',
@@ -906,8 +906,8 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                                 </AnimatePresence>
                             </div>
 
-                            <div className="flex justify-between items-center w-full group cursor-pointer py-2 border-t border-secondary/10">
-                                <span className="font-gotham text-secondary text-[13px] uppercase tracking-wider">Shipping Information</span>
+                            <div className="flex justify-between items-center w-full group cursor-pointer py-1.5 border-t border-secondary/10">
+                                <span className="font-gotham text-secondary text-[12px] uppercase tracking-wider">Shipping Information</span>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-secondary/50 group-hover:text-secondary transition-colors">
                                     <path d="M6 9l6 6 6-6" />
                                 </svg>

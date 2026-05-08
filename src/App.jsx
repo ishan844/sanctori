@@ -1122,6 +1122,122 @@ const UsageAccordion = () => {
     );
 };
 
+const ReviewSection = ({ isAddedToBasket, setIsAddedToBasket }) => {
+    const reviews = [
+        {
+            rating: 5,
+            date: "a day ago",
+            title: "UNLIKE ANY GHEE I'VE TASTED",
+            body: "The depth of flavor is incredible. It has this quiet, nutty sweetness that completely transforms my morning dal. You can tell it's made in small batches with real care. A staple in my kitchen now.",
+            author: "Karan J",
+            memberSince: "2y"
+        },
+        {
+            rating: 5,
+            date: "18 days ago",
+            title: "PURE GOLD IN A JAR",
+            body: "I've tried many artisanal ghees, but this one is on another level. The texture is perfect—grainy just the way it should be—and the aroma when you open the jar is heavenly. Worth every penny.",
+            author: "Zoe B",
+            memberSince: "3m"
+        },
+        {
+            rating: 5,
+            date: "18 days ago",
+            title: "THE BILONA DIFFERENCE",
+            body: "You can really taste the difference the Bilona method makes. It's lighter, more fragrant, and feels much more 'alive' than store-bought options. I use it for everything from frying to finishing. Exceptional quality.",
+            author: "Caleb D",
+            memberSince: "4d"
+        }
+    ];
+
+    return (
+        <section className="w-full bg-tertiary border-t border-secondary/20 overflow-hidden">
+            <div className="max-w-[100rem] mx-auto">
+                {/* Section Header */}
+                <div className="w-full py-12 lg:py-20 border-b border-secondary/20 text-center">
+                    <h2 className="font-rosemode text-secondary text-[28px] lg:text-[44px] uppercase tracking-[-0.02em]">The Reviews Are In</h2>
+                </div>
+
+                <div className="flex flex-col lg:flex-row items-stretch">
+                    {/* Left Column: Image */}
+                    <div className="w-full lg:w-[45%] aspect-[4/5] lg:aspect-auto border-b lg:border-b-0 lg:border-r border-secondary/20">
+                        <img 
+                            src="/assets/piller-art.webp" 
+                            alt="Reviews illustration" 
+                            className="w-full h-full object-cover grayscale-[0.1] opacity-95"
+                        />
+                    </div>
+
+                    {/* Right Column: Content */}
+                    <div className="w-full lg:w-[55%] flex flex-col bg-floural-white/30">
+                        {/* Rating Summary */}
+                        <div className="p-10 lg:p-16 border-b border-secondary/15">
+                            <div className="flex flex-col items-start gap-1">
+                                <span className="font-gotham text-[64px] lg:text-[84px] font-light leading-none text-secondary tracking-tighter">5</span>
+                                <div className="flex gap-1 text-secondary mt-2">
+                                    {[...Array(5)].map((_, i) => (
+                                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    ))}
+                                </div>
+                                <span className="font-gotham text-secondary/40 text-[12px] uppercase tracking-[0.2em] mt-4 font-medium">{reviews.length} reviews</span>
+                            </div>
+                        </div>
+
+                        {/* Individual Reviews */}
+                        <div className="flex-1 overflow-y-auto max-h-[600px] scrollbar-hide lg:max-h-none">
+                            {reviews.map((review, idx) => (
+                                <div key={idx} className="p-10 lg:p-16 border-b border-secondary/10 last:border-b-0">
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div className="flex gap-1 text-secondary">
+                                            {[...Array(review.rating)].map((_, i) => (
+                                                <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                            ))}
+                                        </div>
+                                        <span className="font-gotham text-secondary/40 text-[11px] uppercase tracking-[0.15em] font-medium">{review.date}</span>
+                                    </div>
+                                    <h3 className="font-gotham text-secondary text-[14px] lg:text-[15px] font-bold uppercase tracking-[0.08em] mb-4 leading-tight">
+                                        {review.title}
+                                    </h3>
+                                    <p className="font-gotham text-secondary/75 text-[14px] font-normal leading-[185%] mb-8">
+                                        {review.body}
+                                    </p>
+                                    <div className="flex items-center gap-4">
+                                        <span className="font-gotham text-secondary text-[12px] font-semibold uppercase tracking-wider">{review.author}</span>
+                                        {review.memberSince && (
+                                            <div className="flex items-center gap-1.5 text-[#C87541]">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                                <span className="text-[10px] font-gotham uppercase tracking-[0.12em] font-bold">Member since {review.memberSince}</span>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Bottom Bar: Action */}
+                        <div className="p-10 lg:p-12 border-t border-secondary/20 bg-floural-white flex flex-col sm:flex-row items-center justify-between gap-8 mt-auto">
+                            <motion.button
+                                onClick={() => {
+                                    setIsAddedToBasket(true);
+                                }}
+                                whileTap={{ scale: 0.98 }}
+                                whileHover={{ backgroundColor: '#2a2a2a' }}
+                                className="w-full sm:w-auto px-12 py-4 bg-secondary text-tertiary font-gotham text-[12px] uppercase tracking-[0.2em] font-medium transition-all duration-300 cursor-pointer"
+                            >
+                                Add to Basket
+                            </motion.button>
+                            <div className="flex items-baseline gap-2">
+                                <span className="font-gotham text-secondary/40 text-[12px] uppercase font-medium">Price</span>
+                                <span className="font-gotham text-secondary text-[22px] font-light tracking-wide">£35.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
 function App() {
     const [isAddedToBasket, setIsAddedToBasket] = useState(false);
 
@@ -1188,62 +1304,8 @@ function App() {
                 <UsageAccordion />
 
                 {/* 3. REVIEWS & CERTIFICATIONS */}
-                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-5xl mx-auto px-6 py-24 lg:py-40 flex flex-col items-center justify-center text-center">
-                    <motion.img variants={fadeUp} src="/assets/quote.svg" alt="quote icon" className="w-8 h-8 mb-12 opacity-60" />
-                    <motion.p variants={fadeUp} className="font-rosemode text-secondary text-[24px] lg:text-[36px] leading-[150%] mb-12 max-w-4xl">
-                        "The depth of flavor is unlike anything I've found on the high street. It brings an incredible warmth and richness to everything from my morning oats to evening roasts. A true staple."
-                    </motion.p>
-                    <motion.div variants={fadeUp} className="flex flex-col items-center gap-1 mb-12">
-                        <span className="font-gotham text-secondary text-[12px] uppercase tracking-[5%] font-medium">— Eleanor V., London</span>
-                        <span className="font-gotham text-secondary/50 text-[12px] uppercase tracking-[5%]">Member since 2024</span>
-                    </motion.div>
+                <ReviewSection isAddedToBasket={isAddedToBasket} setIsAddedToBasket={setIsAddedToBasket} />
 
-                    <motion.div variants={fadeUp} className="w-full flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-20 border-t border-secondary/25 pt-12">
-                        {["Certified Organic", "Members' Choice", "Ethically Sourced"].map((cert, i) => (
-                            <React.Fragment key={i}>
-                                <div className="flex items-center gap-3">
-                                    <span className="font-gotham text-secondary text-[12px] font-medium uppercase tracking-[5%]">{cert}</span>
-                                </div>
-                                {i < 2 && <div className="hidden sm:block h-px w-8 bg-secondary/25"></div>}
-                            </React.Fragment>
-                        ))}
-                    </motion.div>
-                </motion.div>
-
-                {/* 4. YOU MAY LIKE */}
-                <div className="w-full bg-floural-white py-20 lg:py-32 border-t border-secondary/25">
-                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-[100rem] mx-auto px-6 lg:px-[84px] flex flex-col items-start gap-12">
-                        <motion.h2 variants={fadeUp} className="font-rosemode text-secondary text-[29px] lg:text-[36px] leading-none">Explore Further</motion.h2>
-
-                        <div className="flex w-full flex-row flex-wrap items-stretch justify-start gap-8 lg:gap-12">
-                            {[
-                                { title: "Oats & More Oats", price: "£12", img: "/assets/home-1.jpeg" },
-                                { title: "Finely Pressed Olive Oil", price: "£28", img: "/assets/home-2.jpeg" },
-                                { title: "Honey and Honey", price: "£22", img: "/assets/home-3.jpeg" }
-                            ].map((product, i) => (
-                                <motion.div variants={fadeUp} key={i} role="button" tabIndex={0} className="bg-tertiary group w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-2.25rem)] font-gotham overflow-hidden transition-transform duration-300">
-                                    <div className="w-full aspect-[4/5] bg-tertiary flex items-center justify-center p-6">
-                                        <img src={product.img} alt={product.title} className="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                                    </div>
-                                    <div className="flex flex-col items-start gap-2 px-0 py-6 border-t border-secondary/25">
-                                        <div className="flex w-full justify-between items-center">
-                                            <h3 className="text-secondary font-gotham text-[12px] font-medium uppercase tracking-[5%]">{product.title}</h3>
-                                            <span className="text-secondary font-gotham text-[12px] uppercase">{product.price}</span>
-                                        </div>
-                                        <div className="pointer-events-auto flex w-full items-center justify-between gap-2 mt-4">
-                                            <div className="flex cursor-pointer gap-2 hover:opacity-75 transition-opacity">
-                                                <span className="font-gotham text-secondary/50 text-[12px] font-medium uppercase tracking-wider">View</span>
-                                                <span className="icon-wrap relative h-4 w-4">
-                                                    <img className="chevron text-secondary/50 absolute inset-0 mb-0.5 h-4 w-4 transition-transform group-hover:translate-x-2 group-hover:opacity-0" src="/assets/arrow_forward.svg" alt="right arrow" />
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
             </main>
             <Footer />
         </div>

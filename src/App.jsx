@@ -133,7 +133,7 @@ const CartIcon = ({ hasItems }) => {
                                     borderBottom: '5px solid rgba(var(--color-secondary-rgb, 45,30,16), 0.15)',
                                 }}
                             />
-                            <span className="font-gotham text-secondary/80 text-[12px] uppercase tracking-[0.14em] font-medium">
+                            <span className="font-gotham text-secondary/80 text-[10px] uppercase tracking-[0.14em] font-medium">
                                 few things are waiting
                             </span>
                         </div>
@@ -1123,6 +1123,7 @@ const UsageAccordion = () => {
 };
 
 const ReviewSection = ({ isAddedToBasket, setIsAddedToBasket }) => {
+    const [showCheck, setShowCheck] = useState(false);
     const reviews = [
         {
             rating: 5,
@@ -1155,7 +1156,7 @@ const ReviewSection = ({ isAddedToBasket, setIsAddedToBasket }) => {
             <div className="max-w-[100rem] mx-auto">
                 {/* Section Header */}
                 <div className="w-full py-12 lg:py-20 border-b border-secondary/20 text-center">
-                    <h2 className="font-rosemode text-secondary text-[28px] lg:text-[44px] uppercase tracking-[-0.02em]">The Reviews Are In</h2>
+                    <h2 className="font-rosemode text-secondary text-[28px] lg:text-[34px] uppercase tracking-[-0.02em]">The Reviews Are In</h2>
                 </div>
 
                 <div className="flex flex-col lg:flex-row items-stretch">
@@ -1218,13 +1219,73 @@ const ReviewSection = ({ isAddedToBasket, setIsAddedToBasket }) => {
                         <div className="p-10 lg:p-12 border-t border-secondary/20 bg-floural-white flex flex-col sm:flex-row items-center justify-between gap-8 mt-auto">
                             <motion.button
                                 onClick={() => {
-                                    setIsAddedToBasket(true);
+                                    if (!isAddedToBasket) {
+                                        setShowCheck(true);
+                                        setTimeout(() => {
+                                            setShowCheck(false);
+                                            setIsAddedToBasket(true);
+                                        }, 1100);
+                                    }
                                 }}
-                                whileTap={{ scale: 0.98 }}
-                                whileHover={{ backgroundColor: '#2a2a2a' }}
-                                className="w-full sm:w-auto px-12 py-4 bg-secondary text-tertiary font-gotham text-[12px] uppercase tracking-[0.2em] font-medium transition-all duration-300 cursor-pointer"
+                                layout
+                                className={`relative w-full sm:w-auto px-12 py-3 text-[13px] font-medium uppercase tracking-[0.15em] cursor-pointer overflow-hidden border ${isAddedToBasket
+                                    ? 'bg-tertiary text-secondary border-secondary/30'
+                                    : 'bg-secondary text-tertiary border-secondary'
+                                    }`}
+                                style={{ transition: 'background-color 800ms cubic-bezier(0.23, 1, 0.32, 1), color 800ms cubic-bezier(0.23, 1, 0.32, 1), border-color 800ms cubic-bezier(0.23, 1, 0.32, 1)' }}
+                                whileTap={!isAddedToBasket && !showCheck ? { scale: 0.97 } : {}}
+                                transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
                             >
-                                Add to Basket
+                                <AnimatePresence mode="wait">
+                                    {showCheck ? (
+                                        <motion.span
+                                            key="check"
+                                            className="flex items-center justify-center gap-2 w-full"
+                                            initial={{ opacity: 0, scale: 0.9, filter: 'blur(4px)' }}
+                                            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                                            exit={{ opacity: 0, scale: 0.95, filter: 'blur(4px)' }}
+                                            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                                        >
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <motion.path
+                                                    d="M5 13l4 4L19 7"
+                                                    initial={{ pathLength: 0 }}
+                                                    animate={{ pathLength: 1 }}
+                                                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1], delay: 0.15 }}
+                                                />
+                                            </svg>
+                                            <span>Added</span>
+                                        </motion.span>
+                                    ) : isAddedToBasket ? (
+                                        <motion.span
+                                            key="go"
+                                            className="flex items-center justify-center gap-2.5 w-full"
+                                            initial={{ opacity: 0, y: 8, filter: 'blur(4px)' }}
+                                            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                                        >
+                                            <span>Go to Basket</span>
+                                            <motion.svg
+                                                width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                                                initial={{ x: -4, opacity: 0 }}
+                                                animate={{ x: 0, opacity: 1 }}
+                                                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
+                                            >
+                                                <path d="M5 12h14" />
+                                                <path d="M12 5l7 7-7 7" />
+                                            </motion.svg>
+                                        </motion.span>
+                                    ) : (
+                                        <motion.span
+                                            key="add"
+                                            className="flex items-center justify-center w-full"
+                                            exit={{ opacity: 0, scale: 0.95, filter: 'blur(4px)' }}
+                                            transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
+                                        >
+                                            Add to Basket
+                                        </motion.span>
+                                    )}
+                                </AnimatePresence>
                             </motion.button>
                             <div className="flex items-baseline gap-2">
                                 <span className="font-gotham text-secondary/40 text-[12px] uppercase font-medium">Price</span>

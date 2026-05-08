@@ -133,7 +133,7 @@ const CartIcon = ({ hasItems }) => {
                                     borderBottom: '5px solid rgba(var(--color-secondary-rgb, 45,30,16), 0.15)',
                                 }}
                             />
-                            <span className="font-gotham text-secondary/80 text-[10px] uppercase tracking-[0.14em] font-medium">
+                            <span className="font-gotham text-secondary/80 text-xs uppercase tracking-[0.14em] font-medium">
                                 few things are waiting
                             </span>
                         </div>
@@ -209,7 +209,7 @@ const Header = ({ cartHasItems }) => {
                                 <button className="cursor-pointer outline-none hover:opacity-80"><img width="24" height="24" src="/assets/newsletter.svg" alt="mail icon" /></button>
                             </div>
                             <div className="flex items-center gap-6">
-                                <a className="font-gotham text-secondary hover-underline py-2 text-[10px] uppercase" href="/login">Member login</a>
+                                <a className="font-gotham text-secondary hover-underline py-2 text-[13px] uppercase" href="/login">Member login</a>
                             </div>
                         </div>
                         <a href="/"><img className="w-46.5 mx-auto h-24" src="/assets/logo.svg" alt="logo" /></a>
@@ -217,7 +217,7 @@ const Header = ({ cartHasItems }) => {
                 </motion.div>
 
                 {/* Nav links — always visible */}
-                <div className="font-gotham text-secondary flex w-full items-center justify-center overflow-visible py-4 text-center text-[11px] font-normal uppercase bg-tertiary relative">
+                <div className="font-gotham text-secondary flex w-full items-center justify-center overflow-visible py-4 text-center text-sm font-normal uppercase bg-tertiary relative">
                     <div className="flex w-full items-center justify-center">
                         <a className="relative mx-16 my-2 cursor-pointer transition after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:bg-current" href="/products">PRODUCTS</a>
                         <div className="bg-secondary/25 h-6 w-px"></div>
@@ -244,7 +244,7 @@ const Header = ({ cartHasItems }) => {
                     <img className="w-29.25 z-50 h-full" src="/assets/logo.svg" alt="logo" />
                 </a>
                 <div className="flex items-center gap-4">
-                    <a className="font-gotham text-secondary hover-underline pt-2 text-[10px] uppercase" href="/login">Member login</a>
+                    <a className="font-gotham text-secondary hover-underline pt-2 text-[13px] uppercase" href="/login">Member login</a>
                     <CartIcon hasItems={cartHasItems} />
                 </div>
             </header>
@@ -254,22 +254,22 @@ const Header = ({ cartHasItems }) => {
 
 const Footer = () => (
     <div className="z-50! bg-tertiary font-gotham px-13 border-t border-secondary/25 flex w-full flex-wrap gap-8 py-20 lg:justify-center lg:gap-0">
-        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-75 flex grow flex-col gap-5 text-[11px] font-normal uppercase *:space-y-[10%]">
-            <h1 className="text-secondary text-xs! font-medium">Customer Support</h1>
+        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-75 flex grow flex-col gap-5 text-sm font-normal uppercase *:space-y-[10%]">
+            <h1 className="text-secondary text-base! font-medium">Customer Support</h1>
             <a className="space-y-[10%]" href="/#">FAQs/HELP</a>
             <a className="space-y-[10%]" href="/#">Shipping &amp; Delivery</a>
             <a href="/#">Returns &amp; Exchanges</a>
             <a href="/#">Order Tracking</a>
             <a href="?modal=contact">contact us</a>
         </div>
-        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-75 flex grow flex-col gap-5 text-[11px] font-normal uppercase *:space-y-[10%]">
-            <h1 className="text-secondary text-xs font-medium">COMPANY INFORMATION</h1>
+        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-75 flex grow flex-col gap-5 text-sm font-normal uppercase *:space-y-[10%]">
+            <h1 className="text-secondary text-base font-medium">COMPANY INFORMATION</h1>
             <a href="/#">Our Story</a>
             <a href="/#">Brand philosophy</a>
             <a href="/#">Newsletter Archive</a>
         </div>
-        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-75 flex grow flex-col gap-5 text-[11px] font-normal uppercase *:space-y-[10%]">
-            <h1 className="text-secondary text-xs font-medium">LEGAL</h1>
+        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-75 flex grow flex-col gap-5 text-sm font-normal uppercase *:space-y-[10%]">
+            <h1 className="text-secondary text-base font-medium">LEGAL</h1>
             <span>Terms of Service</span>
             <span>Privacy Policy</span>
             <span>Cookie Policy</span>
@@ -278,22 +278,22 @@ const Footer = () => (
             <span>Copyright Notice</span>
             <span>Sitemap</span>
         </div>
-        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-75 flex grow flex-col gap-5 text-[11px] font-normal uppercase *:space-y-[10%]">
-            <h1 className="text-secondary text-xs font-medium">My membership</h1>
+        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-75 flex grow flex-col gap-5 text-sm font-normal uppercase *:space-y-[10%]">
+            <h1 className="text-secondary text-base font-medium">My membership</h1>
             <span>profile</span>
             <span>wishlist</span>
             <span>order history</span>
             <span>addresses</span>
         </div>
-        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-100 flex grow flex-col gap-5 text-[11px] font-normal uppercase">
-            <h1 className="text-secondary space-y-[10%] text-xs font-medium">Community</h1>
+        <div className="font-gotham text-secondary/50 min-w-37.5 max-w-100 flex grow flex-col gap-5 text-sm font-normal uppercase">
+            <h1 className="text-secondary space-y-[10%] text-base font-medium">Community</h1>
             <span className="space-y-[10%]">SUBSCRIBE TO OUR NEWSLETTER</span>
             <div className="mb-6 flex flex-row gap-0">
-                <input className="placeholder:font-gotham text-secondary/75 placeholder:text-[11px]! placeholder:text-secondary/75 bg-tertiary! border-b border-secondary/25 w-full space-y-[10%] py-3 text-[11px] outline-none placeholder:font-normal" placeholder="Enter your email id" spellCheck="false" type="email" />
-                <button className="font-gotham text-secondary hover:opacity-75 cursor-pointer px-3 py-1 text-[10px] font-medium uppercase tracking-[5%] transition-all duration-200 sm:px-6 sm:py-3 sm:text-[11px]">SUBSCRIBE</button>
+                <input className="placeholder:font-gotham text-secondary/75 placeholder:text-sm! placeholder:text-secondary/75 bg-tertiary! border-b border-secondary/25 w-full space-y-[10%] py-3 text-sm outline-none placeholder:font-normal" placeholder="Enter your email id" spellCheck="false" type="email" />
+                <button className="font-gotham text-secondary hover:opacity-75 cursor-pointer px-3 py-1 text-[13px] font-medium uppercase tracking-[5%] transition-all duration-200 sm:px-6 sm:py-3 sm:text-sm">SUBSCRIBE</button>
             </div>
             <div className="flex flex-col items-start justify-center gap-2 mt-4">
-                <span className="font-gotham text-secondary text-[11px] font-medium uppercase">Follow US ON</span>
+                <span className="font-gotham text-secondary text-sm font-medium uppercase">Follow US ON</span>
                 <div className="text-secondary flex items-center justify-center gap-3 mt-2">
                     <a target="_blank" href="https://www.instagram.com/thesanctory/"><img loading="lazy" src="/assets/instagram.svg" width="16" height="16" alt="instagram logo" className="opacity-75 hover:opacity-100 transition-opacity" /></a>
                     <a target="_blank" href="https://www.linkedin.com/company/sanctory/"><img loading="lazy" src="/assets/linkedin.svg" width="16" height="16" alt="linkedin logo" className="opacity-75 hover:opacity-100 transition-opacity" /></a>
@@ -407,7 +407,7 @@ const ProvenanceJourney = () => {
                 <div className="w-full lg:w-[52%] h-full flex flex-col px-8 lg:px-20 xl:px-28 relative">
                     {/* Section title — pushed to top */}
                     <div className="pt-20 lg:pt-32 pb-10">
-                        <h2 className="font-rosemode text-secondary text-xl lg:text-2xl xl:text-3xl leading-[1.15]">
+                        <h2 className="font-rosemode text-secondary text-[26px] lg:text-[31px] xl:text-[40px] leading-[1.15]">
                             The Provenance Journey
                         </h2>
                     </div>
@@ -456,7 +456,7 @@ const ProvenanceJourney = () => {
                                 }}
                             >
                                 {/* Heading */}
-                                <h3 className="font-gotham text-secondary text-lg lg:text-xl xl:text-2xl uppercase tracking-[0.05em] font-bold mb-6 leading-tight">
+                                <h3 className="font-gotham text-secondary text-[24px] lg:text-[26px] xl:text-[31px] uppercase tracking-[0.05em] font-bold mb-6 leading-tight">
                                     {pillar.heading}
                                 </h3>
 
@@ -470,7 +470,7 @@ const ProvenanceJourney = () => {
                                 />
 
                                 {/* Description */}
-                                <p className="font-gotham text-secondary/70 text-sm lg:text-base xl:text-lg font-normal leading-[180%] max-w-xl">
+                                <p className="font-gotham text-secondary/70 text-base lg:text-lg xl:text-xl font-normal leading-[180%] max-w-xl">
                                     {pillar.description}
                                 </p>
                             </div>
@@ -491,26 +491,26 @@ const ProvenanceJourney = () => {
                     />
                 </div>
 
-                <h2 className="font-rosemode text-secondary text-xl leading-[1.15] mb-12">
+                <h2 className="font-rosemode text-secondary text-[26px] leading-[1.15] mb-12">
                     The Provenance Journey
                 </h2>
 
                 <div className="flex flex-col gap-16">
                     {pillars.map((pillar, i) => (
                         <div key={i} className="flex flex-col">
-                            <span className="font-gotham text-secondary/30 text-[10px] uppercase tracking-[0.25em] font-medium mb-4">
+                            <span className="font-gotham text-secondary/30 text-[13px] uppercase tracking-[0.25em] font-medium mb-4">
                                 0{i + 1} / 0{pillars.length}
                             </span>
-                            <h3 className="font-gotham text-secondary text-sm uppercase tracking-[0.1em] font-bold mb-3">
+                            <h3 className="font-gotham text-secondary text-lg uppercase tracking-[0.1em] font-bold mb-3">
                                 {pillar.heading}
                             </h3>
                             <div className="w-10 h-px bg-secondary/20 mb-5" />
-                            <p className="font-gotham text-secondary/70 text-xs font-normal leading-[185%] mb-6">
+                            <p className="font-gotham text-secondary/70 text-sm font-normal leading-[185%] mb-6">
                                 {pillar.description}
                             </p>
                             <ul className="flex flex-col gap-2 pl-0 list-none">
                                 {pillar.bullets.map((bullet, j) => (
-                                    <li key={j} className="font-gotham text-secondary/65 text-[11px] font-normal leading-[170%] flex items-start gap-3">
+                                    <li key={j} className="font-gotham text-secondary/65 text-[14px] font-normal leading-[170%] flex items-start gap-3">
                                         <span className="mt-[8px] w-[5px] h-[5px] rounded-full bg-secondary/35 flex-shrink-0" />
                                         {bullet}
                                     </li>
@@ -677,7 +677,7 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                 </motion.div>
 
                 {/* Content Container */}
-                <div className="relative z-20 max-w-[100rem] mx-auto w-full px-6 lg:px-[84px] h-full flex flex-col lg:flex-row items-center lg:items-start justify-between py-12 lg:pb-20 lg:pt-24">
+                <div className="relative z-20 max-w-[100rem] mx-auto w-full px-6 lg:px-[84px] h-full flex flex-col lg:flex-row items-center lg:items-start justify-between py-16 lg:pb-28 lg:pt-32">
 
                     {/* Left: Thumbnail Carousel — minimal image-only strip */}
                     <motion.div
@@ -722,37 +722,37 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                     {/* Right: The Product Details */}
                     <motion.div
                         style={{ opacity: detailsOpacity, pointerEvents }}
-                        className="w-full lg:w-[42%] flex flex-col items-start text-left z-30 mt-8 lg:mt-0 lg:pt-8 lg:pr-4"
+                        className="w-full lg:w-[42%] flex flex-col items-start text-left z-30 mt-8 lg:mt-0 lg:pt-14 lg:pr-4"
                     >
                         {/* Category / Subtitle */}
-                        <div className="flex items-center gap-4 mb-3 w-full">
+                        <div className="flex items-center gap-4 mb-5 w-full">
                             <div className="h-px w-8 bg-secondary/50"></div>
-                            <span className="font-gotham text-secondary/75 text-[9px] uppercase tracking-[0.2em] font-medium">Saurashtra, India</span>
+                            <span className="font-gotham text-secondary/75 text-[13px] uppercase tracking-[0.2em] font-medium">Saurashtra, India</span>
                         </div>
 
                         {/* Title & Price */}
-                        <div className="flex flex-col w-full mb-4">
-                            <h1 className="font-rosemode text-secondary text-[28px] lg:text-[40px] leading-none mb-1">Gir Bilona Ghee</h1>
-                            <span className="font-gotham text-secondary text-sm lg:text-base font-light">{sizeOptions[selectedSize].price} <span className="text-[11px] text-secondary/50 ml-2">/ {sizeOptions[selectedSize].label}</span></span>
+                        <div className="flex flex-col w-full mb-6">
+                            <h1 className="font-rosemode text-secondary text-[36px] lg:text-[52px] leading-none mb-2">Gir Bilona Ghee</h1>
+                            <span className="font-gotham text-secondary text-lg lg:text-xl font-light">{sizeOptions[selectedSize].price} <span className="text-[14px] text-secondary/50 ml-2">/ {sizeOptions[selectedSize].label}</span></span>
                         </div>
 
                         {/* Description */}
-                        <div className="font-gotham text-secondary/60 text-[11px] lg:text-xs font-normal leading-[170%] mb-6">
+                        <div className="font-gotham text-secondary/60 text-sm lg:text-base font-normal leading-[180%] mb-10">
                             <span className="block whitespace-nowrap"><em>Bilona method — milk set overnight in clay, hand-churned at dawn.</em></span>
                             <span className="block">Fewer than a hundred batches made this way each year.</span>
                         </div>
 
                         {/* Selectors / Add to Cart area */}
-                        <div className="w-full flex flex-col gap-4 mb-6">
+                        <div className="w-full flex flex-col gap-6 mb-10">
                             {/* Size Selector */}
-                            <div className="flex flex-col gap-1.5">
-                                <span className="font-gotham text-secondary/80 text-[9px] uppercase tracking-[0.1em]">Size</span>
+                            <div className="flex flex-col gap-2.5">
+                                <span className="font-gotham text-secondary/80 text-[13px] uppercase tracking-[0.1em]">Size</span>
                                 <div className="flex gap-2">
                                     {Object.entries(sizeOptions).map(([key, opt]) => (
                                         <div key={key} className="relative group">
                                             <button
                                                 onClick={() => setSelectedSize(key)}
-                                                className={`px-4 py-1.5 rounded-full border text-[10px] uppercase tracking-wider transition-all duration-200 cursor-pointer font-gotham font-medium ${selectedSize === key
+                                                className={`px-5 py-2 rounded-full border text-sm uppercase tracking-wider transition-all duration-200 cursor-pointer font-gotham font-medium ${selectedSize === key
                                                     ? 'border-secondary bg-secondary text-tertiary'
                                                     : 'border-secondary/25 text-secondary/60 hover:border-secondary/60 hover:text-secondary'
                                                     }`}
@@ -760,7 +760,7 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                                                 {opt.label}
                                             </button>
                                             {/* Tooltip */}
-                                            <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-secondary text-tertiary font-gotham text-[9px] font-normal normal-case tracking-normal whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 delay-700">
+                                            <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-4 py-2.5 bg-secondary text-tertiary font-gotham text-[13px] font-normal normal-case tracking-normal whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 delay-700">
                                                 {opt.tooltip}
                                                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-secondary"></div>
                                             </div>
@@ -770,11 +770,11 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                             </div>
 
                             {/* Delivery Frequency */}
-                            <div className="flex flex-col gap-1.5">
-                                <span className="font-gotham text-secondary/80 text-[9px] uppercase tracking-[0.1em]">Delivery Frequency</span>
+                            <div className="flex flex-col gap-2.5">
+                                <span className="font-gotham text-secondary/80 text-[13px] uppercase tracking-[0.1em]">Delivery Frequency</span>
                                 <div className="flex gap-2 w-full">
-                                    <button className="flex-1 py-2.5 border border-secondary text-secondary text-[10px] uppercase tracking-wider hover:bg-secondary hover:text-tertiary transition-colors cursor-pointer">One-Time</button>
-                                    <button className="flex-1 py-2.5 border border-secondary/20 text-secondary/50 text-[10px] uppercase tracking-wider hover:border-secondary transition-colors cursor-pointer">Subscribe</button>
+                                    <button className="flex-1 py-3 border border-secondary text-secondary text-sm uppercase tracking-wider hover:bg-secondary hover:text-tertiary transition-colors cursor-pointer">One-Time</button>
+                                    <button className="flex-1 py-3 border border-secondary/20 text-secondary/50 text-sm uppercase tracking-wider hover:border-secondary transition-colors cursor-pointer">Subscribe</button>
                                 </div>
                             </div>
 
@@ -789,7 +789,7 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                                     }
                                 }}
                                 layout
-                                className={`relative w-full py-2.5 text-[10px] font-medium uppercase tracking-[0.15em] cursor-pointer overflow-hidden border ${isAddedToBasket
+                                className={`relative w-full py-3.5 text-sm font-medium uppercase tracking-[0.15em] cursor-pointer overflow-hidden border ${isAddedToBasket
                                     ? 'bg-tertiary text-secondary border-secondary/30'
                                     : 'bg-secondary text-tertiary border-secondary'
                                     }`}
@@ -851,14 +851,14 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                         </div>
 
                         {/* Footer specs */}
-                        <div className="w-full flex flex-col pt-4 border-t border-secondary/20">
+                        <div className="w-full flex flex-col pt-7 border-t border-secondary/20">
                             {/* Tasting Notes Accordion */}
                             <div className="flex flex-col">
                                 <button
                                     onClick={() => setTastingOpen(prev => !prev)}
-                                    className="flex justify-between items-center w-full group cursor-pointer py-1.5 bg-transparent border-none outline-none"
+                                    className="flex justify-between items-center w-full group cursor-pointer py-2.5 bg-transparent border-none outline-none"
                                 >
-                                    <span className="font-gotham text-secondary text-[10px] uppercase tracking-wider">Tasting Notes</span>
+                                    <span className="font-gotham text-secondary text-sm uppercase tracking-wider">Tasting Notes</span>
                                     <motion.svg
                                         width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                                         className="text-secondary/50 group-hover:text-secondary transition-colors"
@@ -878,7 +878,7 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                                             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                                             className="overflow-hidden"
                                         >
-                                            <p className="pb-4 pt-1 font-gotham text-secondary text-[11px] font-light leading-[180%]">
+                                            <p className="pb-5 pt-2 font-gotham text-secondary text-[14px] font-light leading-[200%]">
                                                 {[
                                                     'Rich and nutty with a quiet sweetness underneath. ',
                                                     'A clean finish — no heaviness, no aftertaste. ',
@@ -906,8 +906,8 @@ const ProductHero = ({ isAddedToBasket, setIsAddedToBasket }) => {
                                 </AnimatePresence>
                             </div>
 
-                            <div className="flex justify-between items-center w-full group cursor-pointer py-1.5 border-t border-secondary/10">
-                                <span className="font-gotham text-secondary text-[10px] uppercase tracking-wider">Shipping Information</span>
+                            <div className="flex justify-between items-center w-full group cursor-pointer py-2.5 border-t border-secondary/10">
+                                <span className="font-gotham text-secondary text-sm uppercase tracking-wider">Shipping Information</span>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-secondary/50 group-hover:text-secondary transition-colors">
                                     <path d="M6 9l6 6 6-6" />
                                 </svg>
@@ -939,7 +939,7 @@ const UsageAccordion = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="font-rosemode text-secondary text-xl lg:text-2xl leading-none mb-10"
+                    className="font-rosemode text-secondary text-[31px] lg:text-[40px] leading-none mb-14"
                 >
                     A Few Ways to Use It
                 </motion.h2>
@@ -991,10 +991,10 @@ const UsageAccordion = () => {
                                     {/* Title at bottom */}
                                     <div className="absolute inset-0 flex items-end justify-start p-6">
                                         <div className="flex items-end gap-4">
-                                            <span className="font-gotham text-tertiary/40 text-[9px] font-medium tracking-[0.2em]">
+                                            <span className="font-gotham text-tertiary/40 text-[13px] font-medium tracking-[0.2em]">
                                                 0{i + 1}
                                             </span>
-                                            <h3 className="font-gotham text-tertiary text-[10px] font-medium uppercase tracking-[0.1em] whitespace-nowrap">
+                                            <h3 className="font-gotham text-tertiary text-sm font-medium uppercase tracking-[0.1em] whitespace-nowrap">
                                                 {ritual.title}
                                             </h3>
                                         </div>
@@ -1017,7 +1017,7 @@ const UsageAccordion = () => {
                                     >
                                         {/* Counter — top-left, large with fade */}
                                         <span
-                                            className="absolute top-4 left-8 font-gotham text-secondary/[0.07] text-[54px] font-semibold leading-none select-none pointer-events-none"
+                                            className="absolute top-4 left-8 font-gotham text-secondary/[0.07] text-[70px] font-semibold leading-none select-none pointer-events-none"
                                             style={{
                                                 opacity: isActive ? 1 : 0,
                                                 transform: isActive ? 'translateY(0) scale(1)' : 'translateY(-12px) scale(0.92)',
@@ -1029,7 +1029,7 @@ const UsageAccordion = () => {
                                             0{i + 1}
                                         </span>
                                         <h3
-                                            className="font-gotham text-secondary text-base font-medium uppercase tracking-[0.05em] mb-4"
+                                            className="font-gotham text-secondary text-xl font-medium uppercase tracking-[0.05em] mb-6"
                                             style={{
                                                 transform: isActive ? 'translateY(0)' : 'translateY(16px)',
                                                 opacity: isActive ? 1 : 0,
@@ -1047,7 +1047,7 @@ const UsageAccordion = () => {
                                             }}
                                         />
                                         <p
-                                            className="font-gotham text-secondary/70 text-[11px] font-normal leading-[170%] max-w-sm"
+                                            className="font-gotham text-secondary/70 text-[14px] font-normal leading-[180%] max-w-sm"
                                             style={{
                                                 transform: isActive ? 'translateY(0)' : 'translateY(12px)',
                                                 opacity: isActive ? 1 : 0,
@@ -1110,9 +1110,9 @@ const UsageAccordion = () => {
                                 />
                             </div>
                             <div className="flex flex-col gap-2">
-                                <span className="font-gotham text-secondary/40 text-[10px] font-medium tracking-[0.2em]">0{i + 1}</span>
-                                <h3 className="font-gotham text-secondary text-sm font-medium uppercase tracking-[5%]">{ritual.title}</h3>
-                                <p className="font-gotham text-secondary/75 text-xs font-normal leading-[175%]">{ritual.text}</p>
+                                <span className="font-gotham text-secondary/40 text-[13px] font-medium tracking-[0.2em]">0{i + 1}</span>
+                                <h3 className="font-gotham text-secondary text-lg font-medium uppercase tracking-[5%]">{ritual.title}</h3>
+                                <p className="font-gotham text-secondary/75 text-sm font-normal leading-[175%]">{ritual.text}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -1189,20 +1189,20 @@ function App() {
 
                 {/* 3. REVIEWS & CERTIFICATIONS */}
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-5xl mx-auto px-6 py-24 lg:py-40 flex flex-col items-center justify-center text-center">
-                    <motion.img variants={fadeUp} src="/assets/quote.svg" alt="quote icon" className="w-8 h-8 mb-8 opacity-60" />
-                    <motion.p variants={fadeUp} className="font-rosemode text-secondary text-xl lg:text-3xl leading-[150%] mb-8 max-w-4xl">
+                    <motion.img variants={fadeUp} src="/assets/quote.svg" alt="quote icon" className="w-8 h-8 mb-12 opacity-60" />
+                    <motion.p variants={fadeUp} className="font-rosemode text-secondary text-[26px] lg:text-[40px] leading-[150%] mb-12 max-w-4xl">
                         "The depth of flavor is unlike anything I've found on the high street. It brings an incredible warmth and richness to everything from my morning oats to evening roasts. A true staple."
                     </motion.p>
                     <motion.div variants={fadeUp} className="flex flex-col items-center gap-1 mb-12">
-                        <span className="font-gotham text-secondary text-[10px] uppercase tracking-[5%] font-medium">— Eleanor V., London</span>
-                        <span className="font-gotham text-secondary/50 text-[10px] uppercase tracking-[5%]">Member since 2024</span>
+                        <span className="font-gotham text-secondary text-[13px] uppercase tracking-[5%] font-medium">— Eleanor V., London</span>
+                        <span className="font-gotham text-secondary/50 text-[13px] uppercase tracking-[5%]">Member since 2024</span>
                     </motion.div>
 
                     <motion.div variants={fadeUp} className="w-full flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-20 border-t border-secondary/25 pt-12">
                         {["Certified Organic", "Members' Choice", "Ethically Sourced"].map((cert, i) => (
                             <React.Fragment key={i}>
                                 <div className="flex items-center gap-3">
-                                    <span className="font-gotham text-secondary text-[10px] font-medium uppercase tracking-[5%]">{cert}</span>
+                                    <span className="font-gotham text-secondary text-[13px] font-medium uppercase tracking-[5%]">{cert}</span>
                                 </div>
                                 {i < 2 && <div className="hidden sm:block h-px w-8 bg-secondary/25"></div>}
                             </React.Fragment>
@@ -1213,7 +1213,7 @@ function App() {
                 {/* 4. YOU MAY LIKE */}
                 <div className="w-full bg-floural-white py-20 lg:py-32 border-t border-secondary/25">
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-[100rem] mx-auto px-6 lg:px-[84px] flex flex-col items-start gap-12">
-                        <motion.h2 variants={fadeUp} className="font-rosemode text-secondary text-2xl lg:text-3xl leading-none">Explore Further</motion.h2>
+                        <motion.h2 variants={fadeUp} className="font-rosemode text-secondary text-[31px] lg:text-[40px] leading-none">Explore Further</motion.h2>
 
                         <div className="flex w-full flex-row flex-wrap items-stretch justify-start gap-8 lg:gap-12">
                             {[
@@ -1227,12 +1227,12 @@ function App() {
                                     </div>
                                     <div className="flex flex-col items-start gap-2 px-0 py-6 border-t border-secondary/25">
                                         <div className="flex w-full justify-between items-center">
-                                            <h3 className="text-secondary font-gotham text-[10px] font-medium uppercase tracking-[5%]">{product.title}</h3>
-                                            <span className="text-secondary font-gotham text-[10px] uppercase">{product.price}</span>
+                                            <h3 className="text-secondary font-gotham text-[13px] font-medium uppercase tracking-[5%]">{product.title}</h3>
+                                            <span className="text-secondary font-gotham text-[13px] uppercase">{product.price}</span>
                                         </div>
                                         <div className="pointer-events-auto flex w-full items-center justify-between gap-2 mt-4">
                                             <div className="flex cursor-pointer gap-2 hover:opacity-75 transition-opacity">
-                                                <span className="font-gotham text-secondary/50 text-[10px] font-medium uppercase tracking-wider">View</span>
+                                                <span className="font-gotham text-secondary/50 text-[13px] font-medium uppercase tracking-wider">View</span>
                                                 <span className="icon-wrap relative h-4 w-4">
                                                     <img className="chevron text-secondary/50 absolute inset-0 mb-0.5 h-4 w-4 transition-transform group-hover:translate-x-2 group-hover:opacity-0" src="/assets/arrow_forward.svg" alt="right arrow" />
                                                 </span>
